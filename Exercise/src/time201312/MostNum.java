@@ -23,20 +23,27 @@ public class MostNum {
 		Scanner scanner=new Scanner(System.in);
 		HashMap<Integer, Integer> map=new HashMap<>();
 		int max=0;
+		//输入数字的个数
 		int number=scanner.nextInt();
+		//建立与数字个数相同的数组
 		int[] array=new int[number];
+		//输入数字，存入map中作为key值，数字出现的次数作为value值
 		for (int i = 0; i < array.length; i++) {
 			array[i]=scanner.nextInt();
 			if (map.containsKey(array[i])) {
+				//数字重复出现，自增
 				map.put(array[i], map.get(array[i])+1);
 			}else {
+				//第一次出现，初始化为1
 				map.put(array[i], 1);
 			}
 			if (map.get(array[i])>max) {
+				//取出出现次数最多的值的次数
 				max=map.get(array[i]);
 			}
 		}
 		int min=1000;
+		//若次数最多的有多个，取出最小的
 		for (int key : map.keySet()) {  
 			if (map.get(key)==max) {
 				if (key<min) {
